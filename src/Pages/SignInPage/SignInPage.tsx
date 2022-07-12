@@ -3,13 +3,13 @@ import "./SignInPage.css";
 
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignInPage: React.FC = () => {
   const [channelName, setChannelName] = useState<string>("");
   const [signInOption, setSignInOption] = useState<string>("");
 
-  let history = useHistory();
+  let history = useNavigate();
 
   const responseGoogle = (res: any) => {
     console.log(res);
