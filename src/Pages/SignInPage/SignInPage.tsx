@@ -30,7 +30,7 @@ const SignInPage: React.FC = () => {
       sessionStorage.setItem("name", name);
       sessionStorage.setItem("imageUrl", imageUrl);
       sessionStorage.setItem("googleId", googleId);
-      navigate.push("/");
+      navigate("/");
     });
   };
 
