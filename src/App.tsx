@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MainPage from "./Pages/MainPage/MainPage";
+import SignInPage from "./Pages/SignInPage/SignInPage";
+import AccountPage from "./Pages/AccountPage/AccountPage";
+import Navbar from "./Components/Navbar/Navbar";
+import UploadPage from "./Pages/UploadPage/UploadPage";
+
+import { ToggleSidebarContext } from "./Helpers/Context";
 
 function App() {
+  const [showSidebar, setShowSidebar] = useState<any>(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ToggleSidebarContext.Provider value={{ showSidebar, setShowSidebar }}>
+      <div className="top">
+        <Navbar />
+      </div>
+      <Router>
+        <Switch>
+          <Route path="/" exact render={() => <MainPage />} />
+          <Route path="/signin" exact render={() => <SignInPage />} />
+          <Route path="/account" exact render={() => <AccountPage />} />
+          <Route path="/upload" exact render={() => <UploadPage />} />
+        </Switch>
+      </Router>
+    </ToggleSidebarContext.Provider>
   );
 }
 
