@@ -9,7 +9,7 @@ const SignInPage: React.FC = () => {
   const [channelName, setChannelName] = useState<string>("");
   const [signInOption, setSignInOption] = useState<string>("");
 
-  let history = useNavigate();
+  let navigate = useNavigate();
 
   const responseGoogle = (res: any) => {
     console.log(res);
@@ -30,7 +30,7 @@ const SignInPage: React.FC = () => {
       sessionStorage.setItem("name", name);
       sessionStorage.setItem("imageUrl", imageUrl);
       sessionStorage.setItem("googleId", googleId);
-      history.push("/");
+      navigate.push("/");
     });
   };
 
