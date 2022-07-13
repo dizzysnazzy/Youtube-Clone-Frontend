@@ -3,13 +3,13 @@ import "./SignInPage.css";
 
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SignInPage: React.FC = () => {
   const [channelName, setChannelName] = useState<string>("");
   const [signInOption, setSignInOption] = useState<string>("");
 
-  let navigate = useNavigate();
+  let history = useHistory();
 
   const responseGoogle = (res: any) => {
     console.log(res);
@@ -30,7 +30,7 @@ const SignInPage: React.FC = () => {
       sessionStorage.setItem("name", name);
       sessionStorage.setItem("imageUrl", imageUrl);
       sessionStorage.setItem("googleId", googleId);
-      navigate("/");
+      history.push("/");
     });
   };
 
